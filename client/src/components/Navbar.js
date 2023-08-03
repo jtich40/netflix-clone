@@ -7,7 +7,7 @@ export default function Navbar() {
 const [isScrolled, setIsScrolled] = useState(false);
 
 window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    setIsScrolled(window.scrollY === 0 ? false : true);
     // prevents loop of setting state
     return () => window.onscroll = null;
 }
