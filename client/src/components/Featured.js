@@ -1,0 +1,49 @@
+import React from 'react';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+
+export default function Featured({type}) {
+    return (
+        <div className="featured">
+            {type && (
+                <div className="category">
+                    <span>{type === "movie" ? "Movies" : "TV Shows"}</span>
+                    <select name="genre" id="genre">
+                        <option>Genre</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="comedy">Comedy</option>
+                        <option value="crime">Crime</option>
+                        <option value="fantasy">Fantasy</option>
+                        <option value="historical">Historical</option>
+                        <option value="horror">Horror</option>
+                        <option value="romance">Romance</option>
+                        <option value="sci-fi">Sci-fi</option>
+                        <option value="thriller">Thriller</option>
+                        <option value="western">Western</option>
+                        <option value="animation">Animation</option>
+                        <option value="drama">Drama</option>
+                        <option value="documentary">Documentary</option>
+                    </select>
+                </div>
+            )}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Featured" />
+            <div className="info">
+                {/* <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Featured" /> */}
+                <span className="desc">Sint pariatur nostrud fugiat deserunt eiusmod ad ullamco cupidatat adipisicing incididunt. 
+                Ut incididunt reprehenderit aliqua ea. Non minim adipisicing commodo aliqua anim officia laborum ex qui aute. 
+                Ut cupidatat est labore elit et ex do commodo proident et do deserunt ipsum.
+                </span>
+                <div className="buttons">
+                    <button className="play">
+                        <PlayArrowIcon />
+                        <span>Play</span>
+                    </button>
+                    <button className="more">
+                        <InfoOutlinedIcon />
+                        <span>Info</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    )
+}
