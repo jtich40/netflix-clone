@@ -26,9 +26,9 @@ export default function Featured({type}) {
                     </select>
                 </div>
             )}
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Featured" />
+            <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Featured" />
             <div className="info">
-                {/* <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Featured" /> */}
+                <img src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1" alt="Featured logo" />
                 <span className="desc">Sint pariatur nostrud fugiat deserunt eiusmod ad ullamco cupidatat adipisicing incididunt. 
                 Ut incididunt reprehenderit aliqua ea. Non minim adipisicing commodo aliqua anim officia laborum ex qui aute. 
                 Ut cupidatat est labore elit et ex do commodo proident et do deserunt ipsum.
@@ -40,7 +40,7 @@ export default function Featured({type}) {
                     </button>
                     <button className="more">
                         <InfoOutlinedIcon />
-                        <span>Info</span>
+                        <span>More Info</span>
                     </button>
                 </div>
             </div>
