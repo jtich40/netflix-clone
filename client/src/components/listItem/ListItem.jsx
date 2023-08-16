@@ -1,8 +1,9 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
+import "./listItem.scss"
 
 export default function ListItem({ index }) {
 

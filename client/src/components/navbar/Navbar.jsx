@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import "./navbar.scss"
 
 export default function Navbar() {
 const [isScrolled, setIsScrolled] = useState(false);
