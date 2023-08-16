@@ -2,7 +2,7 @@ import React from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
-export default function Featured({type}) {
+export default function Featured({ type }) {
     return (
         <div className="featured">
             {type && (
