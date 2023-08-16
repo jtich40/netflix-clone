@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -8,16 +8,16 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
-.home {
+/* .home {
   background-color: var(--main-color);
   overflow: hidden;
-}
+} */
 
 /* Navbar */
 
-.navbar {
+/* .navbar {
   width: 100%;
   color: #fff;
   font-size: 14px;
@@ -90,11 +90,11 @@ code {
 .options span {
   padding: 10px;
   cursor: pointer;
-}
+} */
 
 /* Featured */
 
-.featured {
+/* .featured {
   height: 90vh;
   position: relative;
 }
@@ -172,11 +172,11 @@ code {
 
   .buttons span {
     margin-left: 5px;
-  }
+  } */
 
 /* List */
 
-.list {
+/* .list {
   width: 100%;
   margin-top: 10px;
 }
@@ -186,10 +186,6 @@ code {
   font-size: 20px;
   font-weight: 500;
   margin-left: 50px;
-  /* text-align: center; */
-  /* display: block;
-  margin-top: 10px;
-  margin-bottom: 10px; */
  }
 
 .wrapper {
@@ -203,7 +199,6 @@ code {
   margin-top: 10px;
   transform: translateX(0px);
   transition: all 1s ease;
-  /* overflow-x: auto; */
 }
 
 .wrapper {
@@ -228,11 +223,11 @@ code {
 
 .arrow-right {
   right: 0;
-}
+} */
 
 /* ListItem */
 
-.list-item {
+/* .list-item {
   width: 225px;
   height: 120px;
   background-color: var(--main-color);
@@ -240,7 +235,7 @@ code {
   overflow: hidden;
   cursor: pointer;
   color: #fff;
-  /* margin-top: 10px; */
+  margin-top: 10px;
   
   img {
     width: 100%;
@@ -284,7 +279,7 @@ code {
           padding: 5px;
           border-radius: 50%;
           margin-right: 10px;
-          /* font-size: 16px; */
+          font-size: 16px;
         }
       }
 
@@ -314,4 +309,4 @@ code {
       }
     }
   }
-}
+} */

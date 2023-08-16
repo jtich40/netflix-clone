@@ -1,7 +1,8 @@
-import { React, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import ArrowBackIosOutlinedIcon from '@mui/icons-material/ArrowBackIosOutlined';
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
-import ListItem from './ListItem';
+import ListItem from '../listItem/ListItem';
+import "./list.scss"
 
 export default function List() {
 
@@ -32,7 +33,7 @@ export default function List() {
             <div className="wrapper">
                 {isMoved && (
                     <ArrowBackIosOutlinedIcon 
-                    className="slider-arrow arrow-left"
+                    className="slider-arrow left"
                     onClick={() => handleClick("left")}
                     />
                 )}
@@ -49,7 +50,7 @@ export default function List() {
                     <ListItem index={9} />
                 </div>
                 <ArrowForwardIosOutlinedIcon 
-                className="slider-arrow arrow-right"
+                className="slider-arrow right"
                 onClick={() => handleClick("right")}
  
                 />
