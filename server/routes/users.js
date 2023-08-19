@@ -14,6 +14,7 @@ router.get("/find/:id", async (req, res) => {
         res.status(500).json(err)
     }
 })
+
 // get all users
 router.get("/", verify, async (req, res) => {
     const query = req.query.new
@@ -25,10 +26,11 @@ router.get("/", verify, async (req, res) => {
         } catch (err) {
             res.status(500).json(err)
         }
-} else {
+    } else {
             res.status(403).json("You are not allowed to see all users!")
         }
 })
+
 // get user stats
 router.get("/stats", async (req, res) => {
     const today = new Date()
@@ -54,6 +56,7 @@ router.get("/stats", async (req, res) => {
         res.status(500).json(err)
     }
 })
+
 // update user
 router.put("/:id", verify, async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
@@ -74,10 +77,11 @@ router.put("/:id", verify, async (req, res) => {
         } catch (err) {
             res.status(500).json(err)
         }
-} else {
+    } else {
             res.status(403).json("You can only update your account!")
         }
 })
+
 // delete user
 router.delete("/:id", verify, async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
@@ -87,7 +91,7 @@ router.delete("/:id", verify, async (req, res) => {
         } catch (err) {
             res.status(500).json(err)
         }
-} else {
+    } else {
             res.status(403).json("You can only delete your account!")
         }
 })
