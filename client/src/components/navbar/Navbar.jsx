@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -22,9 +23,15 @@ window.onscroll = () => {
                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
                         alt="Netflix Logo"
                     />
-                    <span>Home</span>
-                    <span>TV Shows</span>
-                    <span>Movies</span>
+                    <Link to="/" className="link">
+                        <span>Home</span>
+                    </Link>
+                    <Link to="/tv-shows" className="link">
+                        <span>TV Shows</span>
+                    </Link>
+                    <Link to="/movies" className="link">
+                        <span>Movies</span>
+                    </Link>
                     <span>New and Popular</span>
                     <span>My List</span>
                     <span>Browse by Languages</span>

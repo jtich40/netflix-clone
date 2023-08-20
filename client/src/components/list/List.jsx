@@ -4,7 +4,7 @@ import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutl
 import ListItem from '../listItem/ListItem';
 import "./list.scss"
 
-export default function List() {
+export default function List({ list }) {
 
     const [slideNumber, setSlideNumber] = useState(0)
     const [isMoved, setIsMoved] = useState(false)
@@ -29,7 +29,7 @@ export default function List() {
     }
     return (
         <div className="list">
-            <span className="list-title">Continue to watch</span>
+            <span className="list-title">{list.title}</span>
             <div className="wrapper">
                 {isMoved && (
                     <ArrowBackIosOutlinedIcon 
@@ -38,16 +38,9 @@ export default function List() {
                     />
                 )}
                 <div className="list-container" ref={listRef}>
-                    <ListItem index={0} />
-                    <ListItem index={1} />
-                    <ListItem index={2} />
-                    <ListItem index={3} />
-                    <ListItem index={4} />
-                    <ListItem index={5} />
-                    <ListItem index={6} />
-                    <ListItem index={7} />
-                    <ListItem index={8} />
-                    <ListItem index={9} />
+                    {list.content.map((item, i) => (
+                    <ListItem item={item} index={i} />
+                    ))}
                 </div>
                 <ArrowForwardIosOutlinedIcon 
                 className="slider-arrow right"

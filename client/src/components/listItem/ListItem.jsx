@@ -1,24 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
 import "./listItem.scss"
 
-export default function ListItem({ index }) {
+export default function ListItem({ index, item }) {
 
     const [isHovered, setIsHovered] = useState(false)
-    const trailer = "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+    const [movie, setMovie] = useState({})
+
+    // get movie data from backend
+    useEffect(() => {
+        const getMovie = async () => {
+            try {
+                // pass in item as parameter to get each movie
+                const res = await axios.get("/movies/find/" + item, {
+                    // pass in token as header for authentication
+                    headers: {
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZGVlODc0NjJmZDM0ZjMzYjU3ZGEzNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjQ5NjM4OCwiZXhwIjoxNjkyOTI4Mzg4fQ.mnlAlaLHVJeBTCcDiznJMKm86Z5lkZFQtEz16QaJI4I"
+                    }
+                })
+                setMovie(res.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getMovie()
+    }, [item])
+
     return (
         <div className="list-item" 
         style={{left: isHovered && index * 225 - 50 + index * 2.5}}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         >
-            <img src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/X194eJsgWBDE2aQbaNdmCXGUP-Y/AAAABU7D36jL6KiLG1xI8Xg_cZK-hYQj1L8yRxbQuB0rcLCnAk8AhEK5EM83QI71bRHUm0qOYxonD88gaThgDaPu7NuUfRg.jpg?r=4ee" alt="" />
+            <img src={movie.image} alt="" />
             {isHovered && (
             <>
-                <video src={trailer} autoPlay={true} loop />
+                <video src={movie.trailer} autoPlay={true} loop />
                 <div className="item-info">
                     <div className="list-icons">
                         <PlayArrowIcon className="info-icon" />
@@ -27,15 +48,12 @@ export default function ListItem({ index }) {
                         <ThumbDownOutlinedIcon className="info-icon" />
                     </div>
                     <div className="item-info-top">
-                        <span>1 hour 14 mins</span>
-                        <span className="limit">+16</span>
-                        <span>1999</span>
+                        <span>{movie.duration}</span>
+                        <span className="limit">{movie.ageLimit}</span>
+                        <span>{movie.year}</span>
                     </div>
-                    <div className="info-description">
-                    Ad pariatur aliquip mollit do dolor amet quis deserunt. 
-                    Laboris aute qui eu sit anim ex occaecat aliquip veniam tempor duis. 
-                    </div>
-                    <div className="genre">Action</div>
+                    <div className="info-description">{movie.description}</div>
+                    <div className="genre">{movie.genre}</div>
                 </div>
             </>
         )}
