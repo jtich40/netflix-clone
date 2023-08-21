@@ -24,7 +24,7 @@ function App() {
         { user && (
         <>
         <Route exact path="/movies" element={<Home type="movie" />} />
-        <Route exact path="/tv-shows" element={<Home type="tv shows" />} />
+        <Route exact path="/tv-shows" element={<Home type="series" />} />
         <Route exact path="/watch" element={<Watch />} />
         </>
         )  
