@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import "./featured.scss"
 
 export default function Featured({ type }) {
+
+    const [content, setContent] = useState({})
+    // get random movie or tv show from backend
+    useEffect(() => {
+        const getRandomContent = async () => {
+            try{
+                // pass in type as query parameter to backend
+                const res = await axios.get(`/movies/random?type=${type}`, {
+                    // pass in token as header for authentication
+                    headers: {
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZGVlODc0NjJmZDM0ZjMzYjU3ZGEzNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY5MjQ5NjM4OCwiZXhwIjoxNjkyOTI4Mzg4fQ.mnlAlaLHVJeBTCcDiznJMKm86Z5lkZFQtEz16QaJI4I"
+                    }
+                })
+                setContent(res.data[0])
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        getRandomContent()
+    }, [type])
+
     return (
         <div className="featured">
             {type && (
@@ -27,13 +49,10 @@ export default function Featured({ type }) {
                     </select>
                 </div>
             )}
-            <img src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Featured" />
+            <img src={content.image} alt="Featured" />
             <div className="info">
-                <img src="https://occ-0-1432-1433.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABUZdeG1DrMstq-YKHZ-dA-cx2uQN_YbCYx7RABDk0y7F8ZK6nzgCz4bp5qJVgMizPbVpIvXrd4xMBQAuNe0xmuW2WjoeGMDn1cFO.webp?r=df1" alt="Featured logo" />
-                <span className="desc">Sint pariatur nostrud fugiat deserunt eiusmod ad ullamco cupidatat adipisicing incididunt. 
-                Ut incididunt reprehenderit aliqua ea. Non minim adipisicing commodo aliqua anim officia laborum ex qui aute. 
-                Ut cupidatat est labore elit et ex do commodo proident et do deserunt ipsum.
-                </span>
+                <img src={content.imageTitle} alt="Featured logo" />
+                <span className="desc">{content.description}</span>
                 <div className="buttons">
                     <button className="play">
                         <PlayArrowIcon />
