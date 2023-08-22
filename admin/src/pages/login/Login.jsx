@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import "./login.css";
+import { AuthContext } from '../../context/authContext/AuthContext';
+import { login } from '../../context/authContext/ApiCalls';
 
 export default function Login() {
 
@@ -7,6 +9,7 @@ export default function Login() {
         email: "",
         password: ""
     });
+    const { isFetching, dispatch } = useContext(AuthContext)
     
 
     function handleChange(event) {
@@ -19,6 +22,8 @@ export default function Login() {
 
     function handleLogin(event) {
         event.preventDefault();
+        // use login function from authContext and pass in the form data and dispatch
+        login(formData, dispatch)
     }
 
 
@@ -30,7 +35,8 @@ export default function Login() {
                 </div>
                 <h1 className ="login-header">Netflix Admin Dashboard</h1>
                 <form className="login-form">
-                    <input type="email" 
+                    <input 
+                    type="email" 
                     placeholder="email" 
                     className="login-input"
                     name="email"
@@ -45,7 +51,13 @@ export default function Login() {
                     value={formData.password}
                     onChange={handleChange} 
                     />
-                    <button className="login-btn" onClick={handleLogin}>Login</button>
+                    <button 
+                    className="login-btn" 
+                    onClick={handleLogin}
+                    disabled={isFetching}
+                    >
+                        Login
+                    </button>
                 </form>
             </div>
         </div>
