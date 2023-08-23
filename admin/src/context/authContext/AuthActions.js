@@ -11,3 +11,8 @@ export const loginSuccess = (user) => ({
 export const loginFailure = () => ({
     type: "LOGIN_FAILURE",
 })
+
+// logout action
+export const logout = () => ({
+    type: "LOGOUT",
+})

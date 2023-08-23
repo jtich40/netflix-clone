@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import "./login.css";
 import { AuthContext } from '../../context/authContext/AuthContext';
-import { login } from '../../context/authContext/ApiCalls';
+import { login } from '../../context/authContext/apiCalls';
 
 export default function Login() {
 
