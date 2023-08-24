@@ -12,7 +12,10 @@ import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
+import ListList from "./pages/listList/ListList";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import List from "./pages/list/List";
+import NewList from "./pages/newList/NewList";
 
 function App() {
   // get the user from the authContext to conditionally render the login page
@@ -49,6 +52,15 @@ function App() {
               </Route>
               <Route path="/newproduct">
                 <NewProduct />
+              </Route>
+              <Route path="/lists">
+                <ListList />
+              </Route>
+              <Route path="/list/:listId">
+                <List />
+              </Route>
+              <Route path="/newlist">
+                <NewList />
               </Route>
           </div>
           </>
