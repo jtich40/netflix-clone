@@ -4,7 +4,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import "./featured.scss"
 
-export default function Featured({ type }) {
+export default function Featured({ type, setGenre }) {
 
     const [content, setContent] = useState({})
     // get random movie or tv show from backend
@@ -31,7 +31,11 @@ export default function Featured({ type }) {
             {type && (
                 <div className="category">
                     <span>{type === "movie" ? "Movies" : "TV Shows"}</span>
-                    <select name="genre" id="genre">
+                    <select 
+                    name="genre" 
+                    id="genre" 
+                    onChange={e => setGenre(e.target.value)}
+                    >
                         <option>Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>

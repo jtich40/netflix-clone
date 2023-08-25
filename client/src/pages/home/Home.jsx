@@ -34,7 +34,7 @@ export default function Home({ type }) {
         <div className="home">
             <Navbar />
             {/* type is set according to type prop defined in App.jsx for each route */}
-            <Featured type={type} />
+            <Featured type={type} setGenre={setGenre} />
             {lists.map(list => (
                 <List list={list} />
             ))}
