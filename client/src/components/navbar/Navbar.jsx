@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import "./navbar.scss"
+import { AuthContext } from '../../authContext/AuthContext';
+import { logout } from '../../authContext/AuthActions';
 
 export default function Navbar() {
-const [isScrolled, setIsScrolled] = useState(false);
+    
+    const [isScrolled, setIsScrolled] = useState(false);
+    const { dispatch } = useContext(AuthContext)
 
 window.onscroll = () => {
     setIsScrolled(window.scrollY === 0 ? false : true);
@@ -27,10 +31,10 @@ window.onscroll = () => {
                         <span>Home</span>
                     </Link>
                     <Link to="/tv-shows" className="link">
-                        <span>TV Shows</span>
+                        <span className="navbar-main-links">TV Shows</span>
                     </Link>
                     <Link to="/movies" className="link">
-                        <span>Movies</span>
+                        <span className="navbar-main-links">Movies</span>
                     </Link>
                     <span>New and Popular</span>
                     <span>My List</span>
@@ -49,7 +53,11 @@ window.onscroll = () => {
                         <ArrowDropDownIcon className="icon" />
                         <div className="options">
                             <span>Settings</span>
-                            <span>Logout</span>
+                            <span 
+                            onClick={() => dispatch(logout())}
+                            >
+                                Logout
+                            </span>
                         </div>
                     </div>
                 </div>

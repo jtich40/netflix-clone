@@ -1,22 +1,38 @@
 import React, { useState, useRef } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import "./register.scss"
 
 export default function Register() {
 
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
+const [username, setUsername] = useState("")
 
+const navigate = useNavigate()
 
 const emailRef = useRef()
 const passwordRef = useRef()
+const usernameRef = useRef()
 
+const handleClick = (e) => {
+    navigate("/login")
+}
 
 const handleStart = () => {
+    // set email to value from input field
     setEmail(emailRef.current.value)
 }
 
-const handleFinish = () => {
+const handleFinish = async (e) => {
+    e.preventDefault()
+    // set password and username to values from input fields
     setPassword(passwordRef.current.value)
+    setUsername(usernameRef.current.value)
+    try {
+        await axios.post("auth/register", { email, username, password })
+        navigate("/login")
+    } catch (err) {}
 }
 
     return (
@@ -28,7 +44,12 @@ const handleFinish = () => {
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" 
                     alt="Netflix logo" 
                     />
-                    <button className="login-btn">Sign In</button>
+                    <button 
+                    className="login-btn" 
+                    onClick={handleClick}
+                    >
+                        Sign In
+                    </button>
                 </div>
             </div>
             <div className="container">
@@ -53,11 +74,16 @@ const handleFinish = () => {
                     </div>
                     ) : (
                     <form className="input">
-                    <input 
-                    type="password" 
-                    placeholder="Password" 
-                    ref={passwordRef}
-                    />
+                        <input 
+                        type="username" 
+                        placeholder="username" 
+                        ref={usernameRef}
+                        />
+                        <input 
+                        type="password" 
+                        placeholder="Password" 
+                        ref={passwordRef}
+                        />
                     <button 
                     className="register-btn" 
                     onClick={handleFinish}>

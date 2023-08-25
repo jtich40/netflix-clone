@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,10 +10,12 @@ import Home from './pages/home/Home';
 import Watch from './pages/watch/Watch';
 import Register from './pages/register/Register';
 import Login from './pages/login/Login';
+import { useContext } from "react";
+import { AuthContext } from "./authContext/AuthContext";
 
 
 function App() {
-  const user = true
+  const { user } = useContext(AuthContext)
   return (
     <Router>
       <Routes>
